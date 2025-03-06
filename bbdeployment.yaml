@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: seconddeployment
+  labels:
+    app: bb
+spec: 
+  selector:
+    matchLabels:
+      app: bb
+  replicas: 3
+  template:
+    metadata: 
+      name: bb
+      labels:
+        app: bb
+        tier: frontend
+    spec:
+      containers: 
+        - name: bb
+          image: busybox:latest
+          command: ["sleep", "3600"]
